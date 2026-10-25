@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "title": "全球热点图谱",
+    "subtitle": "示例数据集 · 用于校验渲染与交互",
+    "scope": "全球",
+    "window": "近 72 小时",
+    "generated_at": "2026-10-25T18:30:00+08:00",
+    "sources": ["示例数据", "Reuters", "AP", "新华社"],
+    "disclaimer": "本文件为技能自带的示例数据，仅用于验证可视化效果，不代表真实时政判断。",
+    "story": {
+      "title": "72 小时全球热点演化",
+      "steps": [
+        { "eventId": "evt_gaza", "narration": "停火谈判进入第二阶段，人道通道扩容受阻，加沙面粉储备告急。" },
+        { "eventId": "evt_hormuz", "narration": "霍尔木兹海峡油轮遭拦检， Brent 原油盘中跳涨 4%。" },
+        { "eventId": "evt_redsea", "narration": "红海保险费率跳升，亚欧航线被迫改道好望角，运价创年内新高。" },
+        { "eventId": "evt_ukraine", "narration": "顿涅茨克交火升级，能源设施遭远程打击，欧盟讨论新一轮援助。" },
+        { "eventId": "evt_fed", "narration": "美联储释放年内再降息信号，全球债市重新定价，黄金创新高。" },
+        { "eventId": "evt_taiwan", "narration": "台海周边活动增加，半导体供应链与区域航运受关注。" },
+        { "eventId": "evt_chip", "narration": "先进制程设备出口许可新规生效，亚洲厂商调整交付计划。" }
+      ]
+    }
+  },
+  "events": [
+    {
+      "id": "evt_gaza",
+      "title": "加沙停火谈判进入第二阶段，人道通道扩容方案仍未落地",
+      "short": "加沙停火谈判第二阶段",
+      "summary": "斡旋方提出分阶段停火框架，第二阶段涉及被扣押人员交换与加沙北部人道通道扩容。以色列方面要求先完成人员核验，哈马斯坚持同步开放拉法口岸。联合国称当地面粉储备仅够维持一周。",
+      "category": "conflict",
+      "heat": 96,
+      "severity": 5,
+      "time": "2026-10-25T06:20:00Z",
+      "location": { "name": "加沙地带", "lat": 31.50, "lng": 34.45 },
+      "actors": ["ent_israel", "p_netanyahu", "ent_un", "p_guterres", "topic_ceasefire"],
+      "topics": ["停火谈判", "人道救援"],
+      "heatReasons": ["涉及 3 个大国", "联合国秘书长直接发声", "人道危机持续", "8 家媒体同日报道"],
+      "disputes": [
+        {
+          "claim": "停火谈判已接近达成",
+          "sources": [
+            { "name": "Reuters", "stance": "support", "quote": "第二阶段框架已获斡旋方认可" },
+            { "name": "AP", "stance": "neutral", "quote": "双方仍在人员核验顺序上存在分歧" },
+            { "name": "新华社", "stance": "oppose", "quote": "开放口岸问题尚未解决，达成协议为时尚早" }
+          ]
+        }
+      ],
+      "sources": [
+        { "name": "Reuters", "title": "Gaza truce talks enter second phase", "url": "https://www.reuters.com/world/middle-east/" },
+        { "name": "AP", "title": "Aid convoys wait at Rafah crossing", "url": "https://apnews.com/hub/israel-hamas-war" }
+      ]
+    },
+    {
+      "id": "evt_redsea",
+      "title": "红海航运保险费率跳升，多家班轮公司改道好望角",
+      "short": "红海航运改道",
+      "summary": "曼德海峡附近连续发生商船遇袭事件后，战争险费率一周内上涨逾三倍。马士基、赫伯罗特等宣布绕行好望角，亚欧航线平均航程延长 9 至 12 天，集装箱运价指数创年内新高。",
+      "category": "economy",
+      "heat": 88,
+      "severity": 4,
+      "time": "2026-10-24T14:05:00Z",
+      "location": { "name": "曼德海峡", "lat": 12.58, "lng": 43.33 },
+      "actors": ["topic_shipping", "place_bab", "ent_eu", "ent_china"],
+      "topics": ["供应链", "航运安全"],
+      "heatReasons": ["战争险费率涨 3 倍", "亚欧航线全面改道", "运价指数创新高"],
+      "simulation": {
+        "label": "若护航联盟扩大",
+        "effects": [
+          { "eventId": "evt_redsea", "type": "ease", "desc": "保险费率回落，部分航次恢复红海路线" },
+          { "eventId": "evt_hormuz", "type": "ease", "desc": "海峡通行压力减轻" }
+        ]
+      },
+      "sources": [
+        { "name": "Lloyd's List", "title": "War risk premiums spike in Bab el-Mandeb", "url": "https://lloydslist.com" }
+      ]
+    },
+    {
+      "id": "evt_ukraine",
+      "title": "俄乌在顿涅茨克方向交火强度上升，能源设施再遭远程打击",
+      "short": "顿涅茨克方向交火升级",
+      "summary": "过去 48 小时双方在顿涅茨克北部多个定居点发生高强度交火。乌方称俄军使用远程无人机打击变电站，导致两州轮流停电；俄方称拦截多枚远程弹药。欧盟正在讨论新一轮资金与防空援助方案。",
+      "category": "conflict",
+      "heat": 91,
+      "severity": 5,
+      "time": "2026-10-25T02:40:00Z",
+      "location": { "name": "顿涅茨克", "lat": 48.00, "lng": 37.80 },
+      "actors": ["ent_russia", "p_putin", "ent_ukraine", "p_zelensky", "ent_eu", "ent_nato"],
+      "topics": ["能源设施", "防空援助"],
+      "sources": [
+        { "name": "AP", "title": "Intense fighting reported in Donetsk", "url": "https://apnews.com/hub/ukraine" }
+      ]
+    },
+    {
+      "id": "evt_fed",
+      "title": "美联储释放年内再度降息信号，全球债市重新定价",
+      "short": "美联储降息信号",
+      "summary": "最新会议纪要显示多数委员认为通胀回落路径已足够稳固，市场对 12 月降息概率的定价升至七成。10 年期美债收益率下行，新兴市场货币普遍走强，黄金创历史新高。",
+      "category": "economy",
+      "heat": 84,
+      "severity": 4,
+      "time": "2026-10-24T20:00:00Z",
+      "location": { "name": "华盛顿", "lat": 38.90, "lng": -77.04 },
+      "actors": ["ent_fed", "ent_usa", "topic_rate", "p_lagarde"],
+      "topics": ["货币政策", "全球流动性"],
+      "heatReasons": ["市场定价 12 月降息概率升至 70%", "10 年期美债收益率下行", "黄金创历史新高"],
+      "disputes": [
+        {
+          "claim": "年内应继续降息",
+          "sources": [
+            { "name": "Bloomberg", "stance": "support", "quote": "通胀回落路径已足够稳固" },
+            { "name": "WSJ", "stance": "oppose", "quote": "服务业通胀黏性仍高，需观察更多数据" }
+          ]
+        }
+      ],
+      "sources": [
+        { "name": "Bloomberg", "title": "Fed minutes point to another cut", "url": "https://www.bloomberg.com" }
+      ]
+    },
+    {
+      "id": "evt_ai",
+      "title": "欧盟人工智能法案通用模型条款进入执行期，多家厂商提交合规文件",
+      "short": "欧盟 AI 法案执行",
+      "summary": "通用目的模型提供方须在过渡期结束前提交训练数据摘要、算力披露与风险评估。已有三家美国厂商递交材料，部分开源社区担忧披露义务会抬高合规成本。",
+      "category": "tech",
+      "heat": 76,
+      "severity": 3,
+      "time": "2026-10-24T09:30:00Z",
+      "location": { "name": "布鲁塞尔", "lat": 50.85, "lng": 4.35 },
+      "actors": ["ent_eu", "topic_ai_reg", "p_altman", "p_musk"],
+      "topics": ["AI 治理", "合规"],
+      "sources": [
+        { "name": "Euractiv", "title": "GPAI obligations kick in", "url": "https://www.euractiv.com" }
+      ]
+    },
+    {
+      "id": "evt_hormuz",
+      "title": "霍尔木兹海峡通行船只遭拦检，油价盘中一度跳涨 4%",
+      "short": "霍尔木兹海峡拦检",
+      "summary": "海峡附近一艘油轮被要求接受检查，航运公司暂停部分航次。布伦特原油盘中一度上涨 4%，随后回落。分析机构称全球约五分之一的海运原油经此通道。",
+      "category": "conflict",
+      "heat": 89,
+      "severity": 4,
+      "time": "2026-10-25T01:10:00Z",
+      "location": { "name": "霍尔木兹海峡", "lat": 26.57, "lng": 56.25 },
+      "actors": ["ent_iran", "place_hormuz", "topic_energy", "ent_opec"],
+      "topics": ["原油", "航运安全"],
+      "sources": [
+        { "name": "Reuters", "title": "Tanker boarded near Hormuz", "url": "https://www.reuters.com/markets/commodities/" }
+      ]
+    },
+    {
+      "id": "evt_cop",
+      "title": "气候大会筹备会就损失与损害基金分配规则继续磋商",
+      "short": "损失与损害基金磋商",
+      "summary": "发展中国家要求基金直接面向受极端天气冲击的社区，发达国家倾向通过多边机构投放。会议未就出资时间表达成一致，但同意增设技术委员会。",
+      "category": "climate",
+      "heat": 71,
+      "severity": 3,
+      "time": "2026-10-23T16:20:00Z",
+      "location": { "name": "巴库", "lat": 40.41, "lng": 49.87 },
+      "actors": ["ent_un", "topic_climate", "ent_eu", "ent_china"],
+      "topics": ["气候融资", "多边谈判"],
+      "sources": [
+        { "name": "UNFCCC", "title": "Loss and damage fund consultations", "url": "https://unfccc.int" }
+      ]
+    },
+    {
+      "id": "evt_taiwan",
+      "title": "台海周边海空活动增加，区域航运与半导体供应链受关注",
+      "short": "台海周边活动增加",
+      "summary": "台防务部门称侦测到多批次舰机活动。多家半导体设备商表示正在评估物流冗余方案。区域航运保险费率小幅上行，业界呼吁保持产业链稳定。",
+      "category": "politics",
+      "heat": 82,
+      "severity": 4,
+      "time": "2026-10-24T23:15:00Z",
+      "location": { "name": "台湾海峡", "lat": 24.50, "lng": 119.50 },
+      "actors": ["ent_china", "place_taiwan", "ent_usa", "ent_asean"],
+      "topics": ["区域安全", "半导体供应链"],
+      "heatReasons": ["涉及中美两大经济体", "半导体供应链全球瞩目", "区域航运保险费率上行"],
+      "simulation": {
+        "label": "若供应链中断 30 天",
+        "effects": [
+          { "eventId": "evt_chip", "type": "worsen", "desc": "设备交付延迟加剧，本地替代加速" },
+          { "eventId": "evt_musk", "type": "worsen", "desc": "卫星互联网部署计划推迟" }
+        ]
+      },
+      "sources": [
+        { "name": "Nikkei Asia", "title": "Chip supply chain watches strait tensions", "url": "https://asia.nikkei.com" }
+      ]
+    },
+    {
+      "id": "evt_opec",
+      "title": "OPEC+ 维持减产节奏，市场关注明年一季度配额调整",
+      "short": "OPEC+ 维持减产",
+      "summary": "部长级会议决定延续现有减产规模至年底，并授权技术委员会评估明年一季度产量。声明强调将根据库存与需求数据灵活调整。",
+      "category": "economy",
+      "heat": 68,
+      "severity": 3,
+      "time": "2026-10-23T11:00:00Z",
+      "location": { "name": "维也纳", "lat": 48.21, "lng": 16.37 },
+      "actors": ["ent_opec", "topic_energy", "ent_russia"],
+      "topics": ["原油产量", "能源价格"],
+      "sources": [
+        { "name": "OPEC", "title": "Ministerial meeting statement", "url": "https://www.opec.org" }
+      ]
+    },
+    {
+      "id": "evt_election",
+      "title": "拉美多国进入选举周期，财政与移民议题成为主轴",
+      "short": "拉美选举周期",
+      "summary": "区域内多场选举临近，候选人在财政纪律、治安与移民政策上分歧明显。市场关注主权债利差与汇率波动，国际组织下调部分国家增长预期。",
+      "category": "politics",
+      "heat": 64,
+      "severity": 3,
+      "time": "2026-10-23T08:00:00Z",
+      "location": { "name": "布宜诺斯艾利斯", "lat": -34.60, "lng": -58.38 },
+      "actors": ["ent_usa", "ent_china"],
+      "topics": ["选举", "主权债"],
+      "sources": [
+        { "name": "El País", "title": "Latin America's election cycle", "url": "https://elpais.com" }
+      ]
+    },
+    {
+      "id": "evt_health",
+      "title": "非洲多国启动新型疟疾疫苗大规模接种，冷链缺口待补",
+      "short": "疟疾疫苗大规模接种",
+      "summary": "首批疫苗覆盖五个国家的儿童常规免疫计划。世卫组织称冷链运力与基层人力仍是瓶颈，呼吁追加投入。",
+      "category": "climate",
+      "heat": 57,
+      "severity": 3,
+      "time": "2026-10-22T14:40:00Z",
+      "location": { "name": "拉各斯", "lat": 6.52, "lng": 3.38 },
+      "actors": ["ent_who", "ent_un"],
+      "topics": ["公共卫生", "疫苗"],
+      "sources": [
+        { "name": "WHO", "title": "Malaria vaccine rollout expands", "url": "https://www.who.int" }
+      ]
+    },
+    {
+      "id": "evt_chip",
+      "title": "先进制程设备出口许可新规生效，亚洲厂商调整交付计划",
+      "short": "设备出口许可新规",
+      "summary": "新规将部分量测与封装设备纳入许可清单，厂商需重新申请。业内预计短期交付延迟，中长期推动本地替代与产能区域化。",
+      "category": "tech",
+      "heat": 79,
+      "severity": 4,
+      "time": "2026-10-24T05:00:00Z",
+      "location": { "name": "东京", "lat": 35.68, "lng": 139.69 },
+      "actors": ["ent_usa", "ent_china", "place_taiwan", "topic_ai_reg"],
+      "topics": ["半导体", "出口管制"],
+      "sources": [
+        { "name": "Nikkei Asia", "title": "Chip tool export rules take effect", "url": "https://asia.nikkei.com" }
+      ]
+    },
+    {
+      "id": "evt_protest",
+      "title": "欧洲多城就生活成本举行示威，工会要求提高最低工资",
+      "short": "生活成本示威",
+      "summary": "多个国家工会组织同步集会，诉求集中在最低工资、能源账单与住房成本。部分城市出现交通中断，政府表示将通过定向补贴缓解压力。",
+      "category": "society",
+      "heat": 61,
+      "severity": 2,
+      "time": "2026-10-23T13:10:00Z",
+      "location": { "name": "巴黎", "lat": 48.86, "lng": 2.35 },
+      "actors": ["ent_eu", "p_lagarde"],
+      "topics": ["生活成本", "劳工"],
+      "sources": [
+        { "name": "Le Monde", "title": "Cost-of-living protests across Europe", "url": "https://www.lemonde.fr" }
+      ]
+    },
+    {
+      "id": "evt_quake",
+      "title": "环太平洋带连续发生中强震，多国发布海啸提示后解除",
+      "short": "环太平洋中强震",
+      "summary": "48 小时内环太平洋带记录到多次 6 级以上地震。相关国家发布海啸提示并在数小时后解除，暂无大规模伤亡报告，核设施运行正常。",
+      "category": "climate",
+      "heat": 66,
+      "severity": 3,
+      "time": "2026-10-24T17:30:00Z",
+      "location": { "name": "环太平洋带", "lat": 37.50, "lng": 142.00 },
+      "actors": ["ent_un"],
+      "topics": ["地震", "灾害响应"],
+      "sources": [
+        { "name": "USGS", "title": "M6+ earthquakes in the Pacific ring", "url": "https://earthquake.usgs.gov" }
+      ]
+    },
+    {
+      "id": "evt_asean",
+      "title": "东盟峰会聚焦数字支付互联与粮食安全储备机制",
+      "short": "东盟峰会",
+      "summary": "会议推动跨境二维码支付互认与区域粮食应急储备安排，并讨论南海行为准则磋商的下一步时间表。",
+      "category": "politics",
+      "heat": 59,
+      "severity": 2,
+      "time": "2026-10-22T09:20:00Z",
+      "location": { "name": "新加坡", "lat": 1.35, "lng": 103.82 },
+      "actors": ["ent_asean", "ent_china", "ent_usa"],
+      "topics": ["区域合作", "数字支付"],
+      "sources": [
+        { "name": "CNA", "title": "ASEAN summit outcomes", "url": "https://www.channelnewsasia.com" }
+      ]
+    },
+    {
+      "id": "evt_musk",
+      "title": "星链在东南亚新增落地许可，卫星互联网竞争升温",
+      "short": "星链东南亚扩张",
+      "summary": "监管机构批准新增频谱与落地许可，覆盖偏远岛屿与海上作业场景。本地运营商担忧频谱与价格竞争，正推动互联互通义务条款。",
+      "category": "tech",
+      "heat": 55,
+      "severity": 2,
+      "time": "2026-10-22T06:00:00Z",
+      "location": { "name": "雅加达", "lat": -6.21, "lng": 106.85 },
+      "actors": ["p_musk", "ent_asean"],
+      "topics": ["卫星互联网", "频谱监管"],
+      "sources": [
+        { "name": "Reuters", "title": "Starlink wins new licences in SE Asia", "url": "https://www.reuters.com/technology/" }
+      ]
+    }
+  ],
+  "blindspots": [
+    { "name": "萨赫勒地区", "lat": 15.0, "lng": 2.0, "hint": "武装冲突持续，但国际报道密度低" },
+    { "name": "缅甸若开邦", "lat": 20.5, "lng": 93.0, "hint": "人道局势紧张，报道受限" },
+    { "name": "也门内陆", "lat": 15.0, "lng": 45.5, "hint": "粮食危机深化，物流阻断导致信息匮乏" }
+  ],
+  "entities": [
+    { "id": "ent_usa", "name": "美国", "type": "country", "desc": "联邦政府 · 货币政策与出口管制主导方" },
+    { "id": "ent_china", "name": "中国", "type": "country", "desc": "区域安全与供应链关键方" },
+    { "id": "ent_russia", "name": "俄罗斯", "type": "country", "desc": "能源出口与冲突当事方" },
+    { "id": "ent_ukraine", "name": "乌克兰", "type": "country", "desc": "冲突当事方" },
+    { "id": "ent_israel", "name": "以色列", "type": "country", "desc": "停火谈判当事方" },
+    { "id": "ent_iran", "name": "伊朗", "type": "country", "desc": "海峡通行与地区安全关键方" },
+    { "id": "ent_eu", "name": "欧盟", "type": "org", "desc": "监管与援助方案制定方" },
+    { "id": "ent_un", "name": "联合国", "type": "org", "desc": "人道协调与多边框架" },
+    { "id": "ent_fed", "name": "美联储", "type": "org", "desc": "美国货币政策机构" },
+    { "id": "ent_opec", "name": "OPEC+", "type": "org", "desc": "原油产量协调机制" },
+    { "id": "ent_nato", "name": "北约", "type": "org", "desc": "军事同盟协调机制" },
+    { "id": "ent_who", "name": "世界卫生组织", "type": "org", "desc": "公共卫生标准与项目" },
+    { "id": "ent_asean", "name": "东盟", "type": "org", "desc": "区域合作组织" },
+    { "id": "p_netanyahu", "name": "内塔尼亚胡", "type": "person", "desc": "以色列总理" },
+    { "id": "p_putin", "name": "普京", "type": "person", "desc": "俄罗斯总统" },
+    { "id": "p_zelensky", "name": "泽连斯基", "type": "person", "desc": "乌克兰总统" },
+    { "id": "p_guterres", "name": "古特雷斯", "type": "person", "desc": "联合国秘书长" },
+    { "id": "p_lagarde", "name": "拉加德", "type": "person", "desc": "欧洲央行行长" },
+    { "id": "p_altman", "name": "奥尔特曼", "type": "person", "desc": "AI 企业负责人" },
+    { "id": "p_musk", "name": "马斯克", "type": "person", "desc": "航天与卫星互联网企业负责人" },
+    { "id": "topic_ceasefire", "name": "停火谈判", "type": "topic", "desc": "分阶段停火与被扣押人员交换" },
+    { "id": "topic_energy", "name": "能源安全", "type": "topic", "desc": "原油运输与价格稳定" },
+    { "id": "topic_shipping", "name": "红海航运", "type": "topic", "desc": "战争险费率与航线改道" },
+    { "id": "topic_ai_reg", "name": "AI 监管", "type": "topic", "desc": "通用模型合规义务" },
+    { "id": "topic_rate", "name": "降息周期", "type": "topic", "desc": "全球流动性与资产定价" },
+    { "id": "topic_climate", "name": "气候融资", "type": "topic", "desc": "损失与损害基金" },
+    { "id": "place_hormuz", "name": "霍尔木兹海峡", "type": "place", "desc": "全球关键原油通道" },
+    { "id": "place_bab", "name": "曼德海峡", "type": "place", "desc": "亚欧航线关键节点" },
+    { "id": "place_taiwan", "name": "台湾海峡", "type": "place", "desc": "区域航运与半导体供应链枢纽" }
+  ],
+  "relations": [
+    { "source": "ent_israel", "target": "topic_ceasefire", "type": "participate", "label": "参与停火谈判", "weight": 2 },
+    { "source": "p_netanyahu", "target": "ent_israel", "type": "lead", "label": "以色列总理", "weight": 1.4 },
+    { "source": "p_netanyahu", "target": "evt_gaza", "type": "stance", "label": "要求先完成人员核验", "weight": 1.6 },
+    { "source": "ent_un", "target": "evt_gaza", "type": "participate", "label": "人道协调", "weight": 1.5 },
+    { "source": "p_guterres", "target": "ent_un", "type": "lead", "label": "秘书长", "weight": 1.4 },
+    { "source": "ent_usa", "target": "ent_israel", "type": "cooperate", "label": "安全援助", "weight": 1.8 },
+    { "source": "ent_usa", "target": "ent_iran", "type": "sanction", "label": "制裁与施压", "weight": 1.6 },
+    { "source": "ent_iran", "target": "place_hormuz", "type": "located", "label": "控制北岸", "weight": 1.5 },
+    { "source": "ent_iran", "target": "evt_hormuz", "type": "participate", "label": "拦检油轮", "weight": 1.7 },
+    { "source": "topic_energy", "target": "evt_hormuz", "type": "cause", "label": "价格跳涨", "weight": 1.5 },
+    { "source": "ent_opec", "target": "topic_energy", "type": "participate", "label": "产量协调", "weight": 1.3 },
+    { "source": "ent_russia", "target": "ent_opec", "type": "cooperate", "label": "减产协同", "weight": 1.3 },
+    { "source": "ent_russia", "target": "evt_ukraine", "type": "participate", "label": "冲突当事方", "weight": 2 },
+    { "source": "p_putin", "target": "ent_russia", "type": "lead", "label": "总统", "weight": 1.4 },
+    { "source": "ent_ukraine", "target": "evt_ukraine", "type": "participate", "label": "冲突当事方", "weight": 2 },
+    { "source": "p_zelensky", "target": "ent_ukraine", "type": "lead", "label": "总统", "weight": 1.4 },
+    { "source": "ent_eu", "target": "ent_ukraine", "type": "cooperate", "label": "资金与防空援助", "weight": 1.7 },
+    { "source": "ent_nato", "target": "ent_ukraine", "type": "cooperate", "label": "装备协调", "weight": 1.4 },
+    { "source": "ent_eu", "target": "evt_ai", "type": "participate", "label": "监管执行方", "weight": 1.6 },
+    { "source": "topic_ai_reg", "target": "evt_ai", "type": "related", "label": "合规义务", "weight": 1.4 },
+    { "source": "p_altman", "target": "topic_ai_reg", "type": "stance", "label": "提交合规文件", "weight": 1.3 },
+    { "source": "p_musk", "target": "topic_ai_reg", "type": "stance", "label": "公开质疑披露成本", "weight": 1.2 },
+    { "source": "p_musk", "target": "evt_musk", "type": "participate", "label": "星链扩张", "weight": 1.4 },
+    { "source": "ent_asean", "target": "evt_asean", "type": "participate", "label": "峰会主办", "weight": 1.5 },
+    { "source": "ent_asean", "target": "evt_musk", "type": "related", "label": "落地许可", "weight": 1.2 },
+    { "source": "ent_china", "target": "evt_asean", "type": "cooperate", "label": "数字支付互联", "weight": 1.3 },
+    { "source": "ent_china", "target": "place_taiwan", "type": "related", "label": "海空活动", "weight": 1.6 },
+    { "source": "ent_usa", "target": "place_taiwan", "type": "cooperate", "label": "安全关切", "weight": 1.5 },
+    { "source": "place_taiwan", "target": "evt_taiwan", "type": "located", "label": "事发区域", "weight": 1.6 },
+    { "source": "place_taiwan", "target": "evt_chip", "type": "related", "label": "先进制程产能", "weight": 1.6 },
+    { "source": "ent_usa", "target": "evt_chip", "type": "stance", "label": "出口许可新规", "weight": 1.8 },
+    { "source": "ent_china", "target": "evt_chip", "type": "sanction", "label": "反制与本地替代", "weight": 1.5 },
+    { "source": "ent_fed", "target": "topic_rate", "type": "participate", "label": "政策路径", "weight": 1.7 },
+    { "source": "ent_fed", "target": "evt_fed", "type": "participate", "label": "会议纪要", "weight": 1.8 },
+    { "source": "ent_usa", "target": "ent_fed", "type": "related", "label": "货币政策框架", "weight": 1.2 },
+    { "source": "p_lagarde", "target": "evt_fed", "type": "stance", "label": "关注外溢效应", "weight": 1.2 },
+    { "source": "ent_eu", "target": "evt_protest", "type": "related", "label": "定向补贴", "weight": 1.2 },
+    { "source": "p_lagarde", "target": "evt_protest", "type": "related", "label": "通胀与工资", "weight": 1.1 },
+    { "source": "ent_un", "target": "topic_climate", "type": "participate", "label": "基金托管协调", "weight": 1.5 },
+    { "source": "topic_climate", "target": "evt_cop", "type": "participate", "label": "分配规则磋商", "weight": 1.6 },
+    { "source": "ent_eu", "target": "evt_cop", "type": "stance", "label": "倾向多边机构投放", "weight": 1.3 },
+    { "source": "ent_china", "target": "evt_cop", "type": "stance", "label": "要求明确出资时间表", "weight": 1.3 },
+    { "source": "ent_who", "target": "evt_health", "type": "participate", "label": "接种计划协调", "weight": 1.5 },
+    { "source": "ent_un", "target": "ent_who", "type": "cooperate", "label": "机构协同", "weight": 1.2 },
+    { "source": "ent_un", "target": "evt_quake", "type": "related", "label": "灾害响应协调", "weight": 1.1 },
+    { "source": "topic_shipping", "target": "evt_redsea", "type": "cause", "label": "费率与改道", "weight": 1.6 },
+    { "source": "place_bab", "target": "evt_redsea", "type": "located", "label": "事发海域", "weight": 1.5 },
+    { "source": "topic_shipping", "target": "topic_energy", "type": "related", "label": "运价传导至油价", "weight": 1.3 },
+    { "source": "ent_eu", "target": "evt_redsea", "type": "related", "label": "护航评估", "weight": 1.2 }
+  ]
+}
