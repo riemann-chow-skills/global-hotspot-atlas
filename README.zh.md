@@ -181,7 +181,6 @@ global-hotspot-atlas/
 ├── SKILL.md                 # 技能定义（工作流、规则）
 ├── assets/
 │   ├── atlas/               # 地球 + 图谱 + 导览运行时（HTML/CSS/JS）
-│   ├── landmask.b64         # 预置陆地掩膜
 │   ├── gazetteer.json       # 约 130 个内置地名 + 坐标
 │   └── sample.json          # 自检用样例 atlas
 ├── references/

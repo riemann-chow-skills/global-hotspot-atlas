@@ -2,9 +2,13 @@
 """
 开发期工具：把 world-atlas 的 land-110m TopoJSON 栅格化为「陆地掩膜」位图。
 
-产物 assets/landmask.b64 是纯物理陆地/海洋的二值掩膜 —— 不含任何国界、
-行政区划、主权标注。渲染层只把它当作"哪里是陆地"的采样器，
-因此不涉及地图边界表达与审图合规问题。
+产物是一段 base64 常量，直接写回 scripts/build.mjs 的
+LANDMASK:BEGIN/END 标记段（不在磁盘上单独存放文件，避免引入
+平台不允许的文件类型）。
+
+该掩膜是纯物理陆地/海洋的二值位图 —— 不含任何国界、行政区划、
+主权标注。渲染层只把它当作"哪里是陆地"的采样器，因此不涉及
+地图边界表达与审图合规问题。
 
 运行（仅在需要重新生成掩膜时）：
     python3 tools/build-landmask.py
@@ -16,12 +20,13 @@ import argparse
 import base64
 import json
 import os
+import re
 import sys
 import urllib.request
 
 SOURCE = "https://unpkg.com/world-atlas@2/land-110m.json"
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, "..", "assets", "landmask.b64")
+BUILD = os.path.join(HERE, "..", "scripts", "build.mjs")
 
 # 0.5 度网格：720 x 360，约 55km 采样精度，对点阵地球足够
 WIDTH = 720
@@ -135,10 +140,26 @@ def main():
     print(f"栅格化完成：{WIDTH}x{HEIGHT}，陆地占比 {land / total:.1%}")
 
     b64 = base64.b64encode(bytes(bits)).decode("ascii")
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w", encoding="utf-8") as f:
-        f.write(b64)
-    print(f"已写入 {os.path.relpath(OUT, os.path.join(HERE, '..'))} ({len(b64)} 字符)")
+
+    with open(BUILD, "r", encoding="utf-8") as f:
+        src = f.read()
+
+    new_block = (
+        "// === LANDMASK:BEGIN ===  由 tools/build-landmask.py 维护，请勿手改此段\n"
+        'const LANDMASK_B64 = "%s";\n'
+        "// === LANDMASK:END ===" % b64
+    )
+    pattern = re.compile(
+        r"// === LANDMASK:BEGIN ===.*?// === LANDMASK:END ===", re.DOTALL
+    )
+    if not pattern.search(src):
+        print("错误：build.mjs 中未找到 LANDMASK:BEGIN/END 标记段，未做修改。")
+        return 1
+    src = pattern.sub(lambda m: new_block, src, count=1)
+    with open(BUILD, "w", encoding="utf-8") as f:
+        f.write(src)
+    print(f"已更新 scripts/build.mjs 中的陆地掩膜常量（{len(b64)} 字符）")
+    return 0
 
 
 if __name__ == "__main__":

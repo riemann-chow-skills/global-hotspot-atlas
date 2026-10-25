@@ -181,7 +181,6 @@ global-hotspot-atlas/
 ├── SKILL.md                 # Skill definition (workflow, rules)
 ├── assets/
 │   ├── atlas/               # Globe + graph + tour runtime (HTML/CSS/JS)
-│   ├── landmask.b64         # Prebuilt land mask
 │   ├── gazetteer.json       # ~130 built-in place names + coords
 │   └── sample.json          # Sample atlas for self-check
 ├── references/
